@@ -1,0 +1,506 @@
+{
+  "scenarios": [
+    {
+      "id": "kalutara_flood_2017",
+      "name": "SIMULATION: 2017 FLOOD (KALUTARA)",
+      "center": [6.5854, 79.9607],
+      "zoom": 12,
+      "description": "Rapid river overflow affecting low-lying areas in Bulathsinhala and Palindanuwara.",
+      "incidents": [
+        {
+          "id": "inc_01",
+          "type": "FLOOD",
+          "severity": 9,
+          "lat": 6.6111,
+          "lon": 80.0123,
+          "description": "CRITICAL: Hospital entrance blocked by 4ft water. Patients trapped.",
+          "verified": true,
+          "timestamp": "T-0"
+        },
+        {
+          "id": "inc_02",
+          "type": "LANDSLIDE",
+          "severity": 10,
+          "lat": 6.6345,
+          "lon": 80.0567,
+          "description": "Bulathsinhala Main Rd blocked. 3 Houses buried.",
+          "verified": true,
+          "timestamp": "T-15m"
+        },
+        {
+          "id": "inc_03",
+          "type": "NEED",
+          "severity": 6,
+          "lat": 6.589,
+          "lon": 79.9822,
+          "description": "School converted to shelter. Need 500L Water packs.",
+          "verified": true,
+          "timestamp": "T-30m"
+        },
+        {
+          "id": "inc_04",
+          "type": "TOURIST",
+          "severity": 8,
+          "lat": 6.57,
+          "lon": 79.99,
+          "description": "Van with 6 German tourists stuck near river bank.",
+          "verified": false,
+          "timestamp": "T-45m"
+        }
+      ],
+      "resources": [
+        { "id": "res_01", "type": "BOAT", "status": "IDLE", "lat": 6.58, "lon": 79.96, "capacity": 10 },
+        { "id": "res_02", "type": "TRUCK", "status": "BUSY", "lat": 6.6, "lon": 79.97, "capacity": 50 },
+        { "id": "res_03", "type": "BOAT", "status": "IDLE", "lat": 6.59, "lon": 79.98, "capacity": 12 },
+        { "id": "res_04", "type": "TRUCK", "status": "IDLE", "lat": 6.61, "lon": 80.0, "capacity": 45 },
+        { "id": "res_05", "type": "BOAT", "status": "IDLE", "lat": 6.57, "lon": 79.95, "capacity": 8 }
+      ],
+      "ghost_roads": [
+        {
+          "id": "gr_01",
+          "hazard": "LANDSLIDE",
+          "reason": "Road cut by slope failure (high debris)",
+          "coords": [
+            [6.6252, 80.0301],
+            [6.6307, 80.0412],
+            [6.6359, 80.0523]
+          ]
+        },
+        {
+          "id": "gr_02",
+          "hazard": "FLOOD",
+          "reason": "Bridge submerged (water depth > 1m)",
+          "coords": [
+            [6.6021, 79.9968],
+            [6.5954, 79.9919],
+            [6.5889, 79.9871]
+          ]
+        }
+      ],
+      "flood_polygons": [
+        {
+          "id": "kalutara_depth_01",
+          "depth_m": 0.8,
+          "risk": "MODERATE",
+          "polygon": [[6.585, 79.960], [6.590, 79.975], [6.575, 79.985], [6.565, 79.970]]
+        },
+        {
+          "id": "kalutara_depth_02",
+          "depth_m": 1.6,
+          "risk": "HIGH",
+          "polygon": [[6.605, 79.955], [6.615, 79.975], [6.600, 79.995], [6.590, 79.970]]
+        },
+        {
+          "id": "kalutara_depth_03",
+          "depth_m": 2.4,
+          "risk": "EXTREME",
+          "polygon": [[6.625, 79.965], [6.635, 79.985], [6.620, 80.005], [6.610, 79.980]]
+        }
+      ],
+      "shelters": [
+        {
+          "id": "shelter_kalutara_01",
+          "name": "Kalutara Town Hall",
+          "location": [6.5855, 79.9605],
+          "capacity": 500,
+          "current_occupancy": 210,
+          "intake_rate_per_min": 2.5,
+          "status": "OPEN"
+        },
+        {
+          "id": "shelter_kalutara_02",
+          "name": "Nagoda School Shelter",
+          "location": [6.6050, 79.9705],
+          "capacity": 350,
+          "current_occupancy": 270,
+          "intake_rate_per_min": 1.2,
+          "status": "OPEN"
+        },
+        {
+          "id": "shelter_kalutara_03",
+          "name": "Bombuwala Community Center",
+          "location": [6.6200, 79.9800],
+          "capacity": 200,
+          "current_occupancy": 190,
+          "intake_rate_per_min": 0.8,
+          "status": "OPEN"
+        },
+        {
+          "id": "shelter_kalutara_04",
+          "name": "Matugama Relief Camp",
+          "location": [6.5650, 79.9450],
+          "capacity": 400,
+          "current_occupancy": 150,
+          "intake_rate_per_min": 3.0,
+          "status": "OPEN"
+        }
+      ]
+    },
+    {
+      "id": "trinco_cyclone_2024",
+      "name": "SIMULATION: 2024 CYCLONE (TRINCO)",
+      "center": [8.5711, 81.2335],
+      "zoom": 11,
+      "description": "Category 1 Cyclone making landfall near Nilaveli.",
+      "incidents": [
+        { "id": "inc_05", "type": "WIND", "severity": 8, "lat": 8.6, "lon": 81.2, "description": "Power grid failure in Nilaveli town.", "verified": true, "timestamp": "T-0" },
+        { "id": "inc_06", "type": "TOURIST", "severity": 10, "lat": 8.7, "lon": 81.18, "description": "Pigeon Island boat service lost contact. 12 Pax.", "verified": true, "timestamp": "T-10m" }
+      ],
+      "resources": [
+        { "id": "res_cy_01", "type": "TRUCK", "status": "IDLE", "lat": 8.575, "lon": 81.23, "capacity": 40 },
+        { "id": "res_cy_02", "type": "BOAT", "status": "IDLE", "lat": 8.62, "lon": 81.25, "capacity": 10 }
+      ],
+      "cyclone_cone": {
+        "hours": 6,
+        "polygon": [
+          [8.85, 81.05],
+          [8.75, 81.35],
+          [8.55, 81.52],
+          [8.35, 81.48],
+          [8.25, 81.25],
+          [8.35, 81.05]
+        ],
+        "centerline": [
+          [8.80, 81.12],
+          [8.62, 81.23],
+          [8.45, 81.35]
+        ]
+      },
+      "ghost_roads": [
+        {
+          "id": "gr_cy_01",
+          "hazard": "WIND",
+          "reason": "Coastal road unsafe (gusts > 80km/h)",
+          "coords": [
+            [8.66, 81.30],
+            [8.63, 81.28],
+            [8.60, 81.26],
+            [8.57, 81.24]
+          ]
+        }
+      ],
+      "shelters": [
+        {
+          "id": "shelter_trinco_01",
+          "name": "Trincomalee Sports Complex",
+          "location": [8.5711, 81.2335],
+          "capacity": 800,
+          "current_occupancy": 320,
+          "intake_rate_per_min": 4.0,
+          "status": "OPEN"
+        },
+        {
+          "id": "shelter_trinco_02",
+          "name": "Nilaveli Community Hall",
+          "location": [8.6850, 81.1900],
+          "capacity": 300,
+          "current_occupancy": 280,
+          "intake_rate_per_min": 1.5,
+          "status": "OPEN"
+        }
+      ],
+      "digital_twin": {
+        "start_ts": "2026-02-07T00:00:00Z",
+        "step_minutes": 30,
+        "frames": [
+          {
+            "t": 0,
+            "label": "T-3h",
+            "incidents": [
+              { "id": "inc_t0_01", "type": "WIND", "severity": 5, "lat": 8.85, "lon": 81.12, "description": "Tropical depression forming offshore. Wind speed 55km/h.", "verified": true, "timestamp": "T-3h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[9.05, 80.90], [8.95, 81.40], [8.65, 81.60], [8.45, 81.55], [8.35, 81.30], [8.55, 80.95]],
+              "centerline": [[9.00, 81.05], [8.75, 81.20], [8.50, 81.35]]
+            },
+            "ghost_roads": [],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 120, "intake_rate_per_min": 4.0, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 80, "intake_rate_per_min": 1.5, "status": "OPEN" }
+            ]
+          },
+          {
+            "t": 1,
+            "label": "T-2.5h",
+            "incidents": [
+              { "id": "inc_t1_01", "type": "WIND", "severity": 6, "lat": 8.80, "lon": 81.15, "description": "Wind speed increasing to 70km/h. Small boats returning.", "verified": true, "timestamp": "T-2.5h" },
+              { "id": "inc_t1_02", "type": "TOURIST", "severity": 7, "lat": 8.72, "lon": 81.18, "description": "Pigeon Island tourists evacuation underway.", "verified": true, "timestamp": "T-2.5h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.98, 80.92], [8.88, 81.38], [8.60, 81.58], [8.42, 81.52], [8.32, 81.28], [8.50, 80.98]],
+              "centerline": [[8.92, 81.08], [8.70, 81.22], [8.48, 81.36]]
+            },
+            "ghost_roads": [],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 210, "intake_rate_per_min": 5.0, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 150, "intake_rate_per_min": 2.0, "status": "OPEN" }
+            ]
+          },
+          {
+            "t": 2,
+            "label": "T-2h",
+            "incidents": [
+              { "id": "inc_t2_01", "type": "WIND", "severity": 7, "lat": 8.75, "lon": 81.20, "description": "CYCLONE WARNING: Wind 85km/h, expected landfall T+1h.", "verified": true, "timestamp": "T-2h" },
+              { "id": "inc_t2_02", "type": "TOURIST", "severity": 8, "lat": 8.70, "lon": 81.18, "description": "12 tourists trapped at Pigeon Island. Boat rescue en route.", "verified": true, "timestamp": "T-2h" },
+              { "id": "inc_t2_03", "type": "NEED", "severity": 6, "lat": 8.58, "lon": 81.23, "description": "Coastal villages need evacuation. 200+ families.", "verified": true, "timestamp": "T-2h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.90, 80.95], [8.80, 81.36], [8.56, 81.54], [8.38, 81.50], [8.30, 81.26], [8.46, 81.00]],
+              "centerline": [[8.85, 81.10], [8.65, 81.24], [8.46, 81.37]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t2_01", "hazard": "WIND", "reason": "Coastal road A9: High wind gusts >80km/h", "coords": [[8.72, 81.28], [8.68, 81.26], [8.64, 81.24]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 380, "intake_rate_per_min": 6.5, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 230, "intake_rate_per_min": 2.5, "status": "OPEN" }
+            ]
+          },
+          {
+            "t": 3,
+            "label": "T-1h",
+            "incidents": [
+              { "id": "inc_t3_01", "type": "WIND", "severity": 9, "lat": 8.65, "lon": 81.25, "description": "CRITICAL: Cyclone intensifying. Wind 110km/h. Landfall imminent.", "verified": true, "timestamp": "T-1h" },
+              { "id": "inc_t3_02", "type": "WIND", "severity": 8, "lat": 8.60, "lon": 81.20, "description": "Power grid failure in Nilaveli sector.", "verified": true, "timestamp": "T-1h" },
+              { "id": "inc_t3_03", "type": "TOURIST", "severity": 10, "lat": 8.70, "lon": 81.18, "description": "Pigeon Island boat LOST CONTACT. 12 Pax. Search underway.", "verified": true, "timestamp": "T-1h" },
+              { "id": "inc_t3_04", "type": "LANDSLIDE", "severity": 7, "lat": 8.55, "lon": 81.30, "description": "Heavy rain causing slope instability near villages.", "verified": false, "timestamp": "T-1h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.85, 81.05], [8.75, 81.35], [8.55, 81.52], [8.35, 81.48], [8.25, 81.25], [8.35, 81.05]],
+              "centerline": [[8.80, 81.12], [8.62, 81.23], [8.45, 81.35]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t3_01", "hazard": "WIND", "reason": "Coastal road A9: CLOSED. Gusts >100km/h", "coords": [[8.72, 81.28], [8.68, 81.26], [8.64, 81.24], [8.60, 81.22]] },
+              { "id": "gr_t3_02", "hazard": "WIND", "reason": "Bridge unsafe: wind stress + debris", "coords": [[8.58, 81.26], [8.56, 81.24]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 580, "intake_rate_per_min": 8.0, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 290, "intake_rate_per_min": 3.0, "status": "OPEN" }
+            ]
+          },
+          {
+            "t": 4,
+            "label": "T-0 (LANDFALL)",
+            "incidents": [
+              { "id": "inc_t4_01", "type": "WIND", "severity": 10, "lat": 8.60, "lon": 81.23, "description": "CYCLONE LANDFALL. Category 1. Wind 120km/h. Stay sheltered.", "verified": true, "timestamp": "T-0" },
+              { "id": "inc_t4_02", "type": "WIND", "severity": 9, "lat": 8.58, "lon": 81.20, "description": "Multiple power lines down. Entire grid offline.", "verified": true, "timestamp": "T-0" },
+              { "id": "inc_t4_03", "type": "TOURIST", "severity": 10, "lat": 8.70, "lon": 81.18, "description": "Pigeon Island boat CONFIRMED CAPSIZED. SAR ops launched.", "verified": true, "timestamp": "T-0" },
+              { "id": "inc_t4_04", "type": "LANDSLIDE", "severity": 9, "lat": 8.52, "lon": 81.32, "description": "MAJOR LANDSLIDE blocking evacuation route. 5 houses buried.", "verified": true, "timestamp": "T-0" },
+              { "id": "inc_t4_05", "type": "FLOOD", "severity": 8, "lat": 8.57, "lon": 81.24, "description": "Storm surge flooding coastal areas. Water rising fast.", "verified": true, "timestamp": "T-0" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.75, 81.15], [8.65, 81.40], [8.50, 81.50], [8.35, 81.45], [8.28, 81.28], [8.40, 81.15]],
+              "centerline": [[8.70, 81.20], [8.57, 81.28], [8.45, 81.36]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t4_01", "hazard": "WIND", "reason": "A9 IMPASSABLE: debris, fallen trees", "coords": [[8.72, 81.28], [8.68, 81.26], [8.64, 81.24], [8.60, 81.22], [8.56, 81.20]] },
+              { "id": "gr_t4_02", "hazard": "FLOOD", "reason": "Storm surge: road submerged 1m", "coords": [[8.58, 81.26], [8.56, 81.24], [8.54, 81.22]] },
+              { "id": "gr_t4_03", "hazard": "LANDSLIDE", "reason": "Landslide BLOCKED: major debris", "coords": [[8.53, 81.31], [8.51, 81.33]] }
+            ],
+            "flood_polygons": [
+              { "id": "fl_t4_01", "depth_m": 1.2, "risk": "HIGH", "polygon": [[8.56, 81.22], [8.58, 81.26], [8.54, 81.28], [8.52, 81.24]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 750, "intake_rate_per_min": 5.0, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 300, "intake_rate_per_min": 0.0, "status": "FULL" }
+            ]
+          },
+          {
+            "t": 5,
+            "label": "T+30m",
+            "incidents": [
+              { "id": "inc_t5_01", "type": "WIND", "severity": 9, "lat": 8.55, "lon": 81.28, "description": "Cyclone moving inland. Wind 105km/h. Still dangerous.", "verified": true, "timestamp": "T+30m" },
+              { "id": "inc_t5_02", "type": "WIND", "severity": 8, "lat": 8.54, "lon": 81.25, "description": "Structural damage: 20+ buildings collapsed.", "verified": true, "timestamp": "T+30m" },
+              { "id": "inc_t5_03", "type": "TOURIST", "severity": 10, "lat": 8.70, "lon": 81.18, "description": "SAR located 8 survivors from capsized boat. 4 critical.", "verified": true, "timestamp": "T+30m" },
+              { "id": "inc_t5_04", "type": "LANDSLIDE", "severity": 9, "lat": 8.52, "lon": 81.32, "description": "Landslide area expanding. 3 more houses at risk.", "verified": true, "timestamp": "T+30m" },
+              { "id": "inc_t5_05", "type": "FLOOD", "severity": 9, "lat": 8.57, "lon": 81.24, "description": "Flooding worsening. Water 1.5m in low areas.", "verified": true, "timestamp": "T+30m" },
+              { "id": "inc_t5_06", "type": "NEED", "severity": 8, "lat": 8.60, "lon": 81.22, "description": "Hospital running on backup generator. Medical supplies critical.", "verified": true, "timestamp": "T+30m" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.68, 81.20], [8.58, 81.42], [8.45, 81.48], [8.32, 81.42], [8.26, 81.30], [8.38, 81.20]],
+              "centerline": [[8.63, 81.25], [8.52, 81.32], [8.42, 81.38]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t5_01", "hazard": "WIND", "reason": "A9: debris clearing in progress", "coords": [[8.72, 81.28], [8.68, 81.26], [8.64, 81.24], [8.60, 81.22], [8.56, 81.20]] },
+              { "id": "gr_t5_02", "hazard": "FLOOD", "reason": "Storm surge persists: 1.5m water", "coords": [[8.58, 81.26], [8.56, 81.24], [8.54, 81.22], [8.52, 81.20]] },
+              { "id": "gr_t5_03", "hazard": "LANDSLIDE", "reason": "BLOCKED: clearance will take hours", "coords": [[8.53, 81.31], [8.51, 81.33], [8.49, 81.35]] }
+            ],
+            "flood_polygons": [
+              { "id": "fl_t5_01", "depth_m": 1.5, "risk": "HIGH", "polygon": [[8.56, 81.22], [8.58, 81.26], [8.54, 81.28], [8.52, 81.24]] },
+              { "id": "fl_t5_02", "depth_m": 1.0, "risk": "MODERATE", "polygon": [[8.59, 81.20], [8.61, 81.24], [8.57, 81.26], [8.55, 81.22]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 795, "intake_rate_per_min": 1.0, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 300, "intake_rate_per_min": 0.0, "status": "FULL" }
+            ]
+          },
+          {
+            "t": 6,
+            "label": "T+1h",
+            "incidents": [
+              { "id": "inc_t6_01", "type": "WIND", "severity": 7, "lat": 8.50, "lon": 81.33, "description": "Cyclone weakening as it moves inland. Wind 80km/h.", "verified": true, "timestamp": "T+1h" },
+              { "id": "inc_t6_02", "type": "WIND", "severity": 6, "lat": 8.52, "lon": 81.28, "description": "Damage assessment teams deploying. Power still offline.", "verified": true, "timestamp": "T+1h" },
+              { "id": "inc_t6_03", "type": "TOURIST", "severity": 9, "lat": 8.70, "lon": 81.18, "description": "All 12 boat passengers accounted for. 4 hospitalized.", "verified": true, "timestamp": "T+1h" },
+              { "id": "inc_t6_04", "type": "LANDSLIDE", "severity": 8, "lat": 8.52, "lon": 81.32, "description": "Landslide stabilizing but road remains blocked.", "verified": true, "timestamp": "T+1h" },
+              { "id": "inc_t6_05", "type": "FLOOD", "severity": 7, "lat": 8.57, "lon": 81.24, "description": "Flood waters receding slowly. 1m depth now.", "verified": true, "timestamp": "T+1h" },
+              { "id": "inc_t6_06", "type": "NEED", "severity": 7, "lat": 8.60, "lon": 81.22, "description": "Multiple shelters need supplies: food, water, medical.", "verified": true, "timestamp": "T+1h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.60, 81.25], [8.52, 81.44], [8.40, 81.46], [8.30, 81.40], [8.25, 81.32], [8.35, 81.25]],
+              "centerline": [[8.56, 81.30], [8.47, 81.36], [8.38, 81.40]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t6_01", "hazard": "WIND", "reason": "A9: partial access. Heavy vehicles only", "coords": [[8.68, 81.26], [8.64, 81.24], [8.60, 81.22]] },
+              { "id": "gr_t6_02", "hazard": "FLOOD", "reason": "Flood receding: 1m water remains", "coords": [[8.58, 81.26], [8.56, 81.24], [8.54, 81.22]] },
+              { "id": "gr_t6_03", "hazard": "LANDSLIDE", "reason": "Blocked: clearance ongoing", "coords": [[8.53, 81.31], [8.51, 81.33]] }
+            ],
+            "flood_polygons": [
+              { "id": "fl_t6_01", "depth_m": 1.0, "risk": "MODERATE", "polygon": [[8.56, 81.22], [8.58, 81.26], [8.54, 81.28], [8.52, 81.24]] },
+              { "id": "fl_t6_02", "depth_m": 0.7, "risk": "MODERATE", "polygon": [[8.59, 81.20], [8.61, 81.24], [8.57, 81.26], [8.55, 81.22]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 800, "intake_rate_per_min": 0.0, "status": "FULL" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 300, "intake_rate_per_min": 0.0, "status": "FULL" }
+            ]
+          },
+          {
+            "t": 7,
+            "label": "T+2h",
+            "incidents": [
+              { "id": "inc_t7_01", "type": "WIND", "severity": 5, "lat": 8.45, "lon": 81.38, "description": "Cyclone dissipating. Wind 55km/h. Recovery phase begins.", "verified": true, "timestamp": "T+2h" },
+              { "id": "inc_t7_02", "type": "NEED", "severity": 8, "lat": 8.55, "lon": 81.28, "description": "Infrastructure damage: 100+ buildings destroyed/damaged.", "verified": true, "timestamp": "T+2h" },
+              { "id": "inc_t7_03", "type": "NEED", "severity": 7, "lat": 8.60, "lon": 81.22, "description": "Medical teams needed. 50+ injuries. Power restoration 24h.", "verified": true, "timestamp": "T+2h" },
+              { "id": "inc_t7_04", "type": "LANDSLIDE", "severity": 7, "lat": 8.52, "lon": 81.32, "description": "Landslide clearing: 50% complete. Road partial by evening.", "verified": true, "timestamp": "T+2h" },
+              { "id": "inc_t7_05", "type": "FLOOD", "severity": 5, "lat": 8.57, "lon": 81.24, "description": "Flood mostly receded. Cleanup underway.", "verified": true, "timestamp": "T+2h" }
+            ],
+            "cyclone_cone": {
+              "hours": 6,
+              "polygon": [[8.52, 81.30], [8.45, 81.46], [8.35, 81.44], [8.28, 81.38], [8.24, 81.34], [8.32, 81.30]],
+              "centerline": [[8.48, 81.35], [8.42, 81.40], [8.36, 81.42]]
+            },
+            "ghost_roads": [
+              { "id": "gr_t7_01", "hazard": "WIND", "reason": "A9: REOPENED with caution", "coords": [[8.64, 81.24], [8.60, 81.22]] },
+              { "id": "gr_t7_02", "hazard": "LANDSLIDE", "reason": "Partial access: single lane", "coords": [[8.53, 81.31], [8.51, 81.33]] }
+            ],
+            "flood_polygons": [
+              { "id": "fl_t7_01", "depth_m": 0.5, "risk": "LOW", "polygon": [[8.56, 81.22], [8.58, 81.26], [8.54, 81.28], [8.52, 81.24]] }
+            ],
+            "shelters": [
+              { "id": "shelter_trinco_01", "name": "Trincomalee Sports Complex", "location": [8.5711, 81.2335], "capacity": 800, "current_occupancy": 780, "intake_rate_per_min": -0.5, "status": "OPEN" },
+              { "id": "shelter_trinco_02", "name": "Nilaveli Community Hall", "location": [8.6850, 81.1900], "capacity": 300, "current_occupancy": 285, "intake_rate_per_min": -0.3, "status": "OPEN" }
+            ]
+          }
+        ]
+      },
+      "travel_guard": {
+        "tourist_zones": [
+          {
+            "id": "zone_nilaveli",
+            "name": "Nilaveli Beach",
+            "center": [8.6850, 81.1900],
+            "radius_km": 8,
+            "category": "BEACH"
+          },
+          {
+            "id": "zone_trinco_town",
+            "name": "Trincomalee Town",
+            "center": [8.5711, 81.2335],
+            "radius_km": 5,
+            "category": "URBAN"
+          },
+          {
+            "id": "zone_pigeonisland",
+            "name": "Pigeon Island",
+            "center": [8.7100, 81.1800],
+            "radius_km": 3,
+            "category": "BEACH"
+          },
+          {
+            "id": "zone_uppuveli",
+            "name": "Uppuveli Beach",
+            "center": [8.6200, 81.2100],
+            "radius_km": 6,
+            "category": "BEACH"
+          }
+        ],
+        "safe_destinations": [
+          {
+            "id": "dest_cmb_airport",
+            "name": "Bandaranaike Airport (CMB)",
+            "location": [7.1807, 79.8836],
+            "type": "AIRPORT"
+          },
+          {
+            "id": "dest_colombo",
+            "name": "Colombo Safe Hub",
+            "location": [6.9271, 79.8612],
+            "type": "CITY"
+          },
+          {
+            "id": "dest_kandy",
+            "name": "Kandy Inland Shelter",
+            "location": [7.2906, 80.6337],
+            "type": "INLAND"
+          },
+          {
+            "id": "dest_dambulla",
+            "name": "Dambulla Inland Hub",
+            "location": [7.8600, 80.6517],
+            "type": "INLAND"
+          }
+        ],
+        "green_corridors": [
+          {
+            "id": "corridor_nilaveli_cmb",
+            "from_zone_id": "zone_nilaveli",
+            "to_dest_id": "dest_cmb_airport",
+            "avoid": ["COAST", "WIND>80", "FLOOD_DEPTH>1.0"],
+            "path": [
+              [8.6850, 81.1900],
+              [8.4500, 81.0500],
+              [8.1200, 80.7500],
+              [7.8600, 80.6500],
+              [7.5500, 80.3500],
+              [7.3000, 80.0500],
+              [7.1807, 79.8836]
+            ]
+          },
+          {
+            "id": "corridor_trinco_kandy",
+            "from_zone_id": "zone_trinco_town",
+            "to_dest_id": "dest_kandy",
+            "avoid": ["COAST", "CYCLONE_ZONE"],
+            "path": [
+              [8.5711, 81.2335],
+              [8.3500, 80.9500],
+              [8.1000, 80.7800],
+              [7.8500, 80.6800],
+              [7.5500, 80.6600],
+              [7.2906, 80.6337]
+            ]
+          },
+          {
+            "id": "corridor_pigeonisland_dambulla",
+            "from_zone_id": "zone_pigeonisland",
+            "to_dest_id": "dest_dambulla",
+            "avoid": ["COAST", "WIND>100"],
+            "path": [
+              [8.7100, 81.1800],
+              [8.5000, 81.0000],
+              [8.2500, 80.8500],
+              [8.0500, 80.7200],
+              [7.8600, 80.6517]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

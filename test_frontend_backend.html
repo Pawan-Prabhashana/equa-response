@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equa-Response Optimization Test</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #22d3ee;
+            border-bottom: 2px solid #22d3ee;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        button {
+            background: #22d3ee;
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #06b6d4;
+        }
+        button:disabled {
+            background: #334155;
+            cursor: not-allowed;
+        }
+        .result {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #22d3ee; }
+        .warning { color: #f59e0b; }
+        .slider-container {
+            margin: 20px 0;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, #22d3ee, #a855f7, #ef4444);
+            border-radius: 5px;
+            outline: none;
+        }
+        .alpha-display {
+            text-align: center;
+            font-size: 24px;
+            color: #22d3ee;
+            margin: 10px 0;
+        }
+        .mode-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #64748b;
+        }
+        .route-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #a855f7;
+        }
+        .metric-label {
+            font-size: 11px;
+            color: #64748b;
+        }
+        .metric-value {
+            font-size: 20px;
+            color: #a855f7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 EQUA-RESPONSE Optimization Engine - Live Test</h1>
+    
+    <div class="test-section">
+        <h2 class="info">Step 1: Test Backend Connection</h2>
+        <button onclick="testBackend()">Check Backend Health</button>
+        <div id="backend-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="info">Step 2: Load Scenario Data</h2>
+        <button onclick="loadScenario()">Load Kalutara Flood 2017</button>
+        <div id="scenario-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="info">Step 3: Optimize Route (The Secret Sauce!)</h2>
+        
+        <div class="slider-container">
+            <div class="alpha-display">α = <span id="alpha-value">0.50</span></div>
+            <input type="range" id="alpha-slider" min="0" max="1" step="0.05" value="0.5" 
+                   oninput="updateAlpha(this.value)">
+            <div class="mode-labels">
+                <span>⚡ EFFICIENCY (Distance)</span>
+                <span>🎯 BALANCED</span>
+                <span>⚖️ EQUITY (Severity)</span>
+            </div>
+        </div>
+
+        <button onclick="optimizeRoute(0.0)">Test Alpha = 0.0 (Efficiency)</button>
+        <button onclick="optimizeRoute(0.5)">Test Alpha = 0.5 (Balanced)</button>
+        <button onclick="optimizeRoute(1.0)">Test Alpha = 1.0 (Equity)</button>
+        <button onclick="optimizeRoute(parseFloat(document.getElementById('alpha-slider').value))">
+            Optimize with Current Alpha
+        </button>
+        
+        <div id="optimize-result" class="result"></div>
+    </div>
+
+    <script>
+        let scenarioData = null;
+
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            element.innerHTML += `<span class="${className}">[${timestamp}]</span> ${message}\n`;
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function updateAlpha(value) {
+            document.getElementById('alpha-value').textContent = parseFloat(value).toFixed(2);
+        }
+
+        async function testBackend() {
+            const resultDiv = document.getElementById('backend-result');
+            resultDiv.innerHTML = '<span class="info">Testing backend connection...</span>\n';
+            
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                
+                log('backend-result', '✅ Backend is HEALTHY!', 'success');
+                log('backend-result', `Version: ${data.version}`);
+                log('backend-result', `Status: ${data.status}`);
+                log('backend-result', `Scenarios Loaded: ${data.scenario_count}`);
+                log('backend-result', `Data Loaded: ${data.data_loaded}`, 'success');
+            } catch (error) {
+                log('backend-result', `❌ Backend connection failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function loadScenario() {
+            const resultDiv = document.getElementById('scenario-result');
+            resultDiv.innerHTML = '<span class="info">Loading scenario from backend...</span>\n';
+            
+            try {
+                const response = await fetch('http://localhost:8000/scenarios/kalutara_flood_2017');
+                const data = await response.json();
+                scenarioData = data.scenario;
+                
+                log('scenario-result', '✅ Scenario loaded successfully!', 'success');
+                log('scenario-result', `Name: ${scenarioData.name}`);
+                log('scenario-result', `Description: ${scenarioData.description}`);
+                log('scenario-result', `Incidents: ${scenarioData.incidents.length}`);
+                log('scenario-result', `Resources: ${scenarioData.resources.length}`);
+                log('scenario-result', `Center: [${scenarioData.center.join(', ')}]`);
+                
+                // Display incidents
+                log('scenario-result', '\n📍 Incidents:');
+                scenarioData.incidents.forEach((inc, i) => {
+                    log('scenario-result', 
+                        `  ${i+1}. ${inc.type} (Severity: ${inc.severity}/10) at [${inc.lat}, ${inc.lon}]`);
+                });
+                
+            } catch (error) {
+                log('scenario-result', `❌ Failed to load scenario: ${error.message}`, 'error');
+            }
+        }
+
+        async function optimizeRoute(alpha) {
+            const resultDiv = document.getElementById('optimize-result');
+            
+            if (!scenarioData) {
+                resultDiv.innerHTML = '<span class="error">⚠️ Please load a scenario first!</span>\n';
+                return;
+            }
+
+            resultDiv.innerHTML = `<span class="info">🔄 Optimizing route with α = ${alpha.toFixed(2)}...</span>\n`;
+            
+            try {
+                const request = {
+                    incidents: scenarioData.incidents,
+                    resources: scenarioData.resources,
+                    alpha: alpha,
+                    depot: scenarioData.center
+                };
+
+                const response = await fetch('http://localhost:8000/optimize', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(request)
+                });
+
+                const result = await response.json();
+                
+                log('optimize-result', '✅ ROUTE OPTIMIZED SUCCESSFULLY!', 'success');
+                log('optimize-result', `\n🎯 Algorithm: ${result.algorithm}`, 'info');
+                log('optimize-result', `📏 Total Distance: ${result.total_distance_km} km`, 'info');
+                log('optimize-result', `⚙️ Alpha Used: ${result.alpha_used}`, 'info');
+                log('optimize-result', `🛣️ Waypoints: ${result.path.length}`, 'info');
+                
+                log('optimize-result', '\n📍 Optimized Visit Order:');
+                log('optimize-result', `  START: [${result.path[0].join(', ')}] (Depot)`);
+                result.ordered_incidents.forEach((inc, i) => {
+                    log('optimize-result', 
+                        `  ${i+1}. ${inc.type} (Severity: ${inc.severity}/10) at [${inc.lat}, ${inc.lon}]`);
+                });
+                
+                // Show comparison section
+                log('optimize-result', '\n' + '='.repeat(60));
+                log('optimize-result', '🧠 ALGORITHM INSIGHTS:', 'warning');
+                if (alpha < 0.3) {
+                    log('optimize-result', '⚡ Efficiency Mode: Visiting nearest incidents first');
+                    log('optimize-result', '   → Minimizes total travel distance');
+                    log('optimize-result', '   → Fastest response time to complete all incidents');
+                } else if (alpha > 0.7) {
+                    log('optimize-result', '⚖️ Equity Mode: Prioritizing critical incidents first');
+                    log('optimize-result', '   → Saves high-severity victims first');
+                    log('optimize-result', '   → May travel longer distances for critical cases');
+                } else {
+                    log('optimize-result', '🎯 Balanced Mode: Considering both distance and severity');
+                    log('optimize-result', '   → Optimizes for both speed and criticality');
+                }
+                
+            } catch (error) {
+                log('optimize-result', `❌ Optimization failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                log('backend-result', 'Welcome to Equa-Response! Click the buttons to test the optimization engine.');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
