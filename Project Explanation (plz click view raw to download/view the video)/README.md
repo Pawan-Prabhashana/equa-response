@@ -11,4 +11,3 @@ To watch/download it reliably:
 2. Click **View raw** to stream or download
 
 If the browser doesn’t play it, use **View raw** and download the file to watch locally.
-

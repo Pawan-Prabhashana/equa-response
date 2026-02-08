@@ -5,6 +5,7 @@ EQUA-RESPONSE is a Sri Lanka–focused disaster response web platform that combi
 ## Why this matters (and what’s creative about it)
 
 Most systems stop at “visualize the situation.” EQUA-RESPONSE goes further: **it helps commanders choose the best doctrine** by turning planning into an evaluatable workflow:
+
 - **Battle Mode** compares 2–4 playbooks on equity, efficiency, safety, overload avoidance, and feasibility.
 - **Robustness Testing (Monte Carlo)** runs 30 seeded simulations with variable floods/roads/shelters/sensor confidence to quantify reliability (success rate + confidence grade).
 - **Sub-district Hotspots (P1/P2/P3)** converts district-level awareness into tactical priorities.
@@ -20,13 +21,16 @@ Most systems stop at “visualize the situation.” EQUA-RESPONSE goes further: 
 ## What you can do in the app
 
 ### Core command center (operational dashboard)
+
 - View hazards (flood polygons, cyclone cone, blocked roads), incidents, shelters, and assets on an interactive map.
 - Run scenario playback via the Digital Twin view.
 - Coordinate missions (Mission Control), communications (Comms Console), logistics, and assets/readiness.
 - Use a deterministic Ops Copilot for recommendations and quick actions.
 
 ### Playbook Studio (flagship)
+
 Playbook Studio is intentionally **guided** (not a data shower). It’s built around an operator workflow:
+
 1. **Doctrine Builder**: choose affected districts, objectives, triggers, constraints, comms presets, and alpha strategy.
 2. **Battle Mode**: select 2–4 playbooks and compare scoreboards + failure points + resource utilization; promote the winner to active doctrine.
 3. **Robustness Test**: run 30 uncertainty simulations (seeded) to measure stability and confidence grade (A–F) with distribution charts.
@@ -79,6 +83,7 @@ npm run dev
 Open: `http://127.0.0.1:3000`
 
 ### API base URL (optional)
+
 If your API runs on a different port, set:
 
 ```bash
@@ -91,5 +96,5 @@ Then restart the dev server.
 ## Documentation
 
 All prior `.md` files that were cluttering the repo root were moved into `docs/`—start here:
-- `docs/README.md`
 
+- `docs/README.md`

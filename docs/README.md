@@ -69,4 +69,3 @@ This folder contains all project notes, progress logs, and testing guides that w
 - `QUICK_TEST_MOCK_DATA.md`
 - `QUICK_TEST_IMPACT_FEED.md`
 - `QUICK_START_DISTRICT_INTELLIGENCE.md`
-
