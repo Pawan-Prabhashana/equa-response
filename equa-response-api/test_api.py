@@ -77,16 +77,28 @@ def test_optimize():
             "timestamp": "T-15m"
         }
     ]
-    
+
+    # /optimize requires both incidents and resources
+    resources = [
+        {
+            "id": "res_01",
+            "type": "BOAT",
+            "status": "IDLE",
+            "lat": 7.8731,
+            "lon": 80.7718,
+            "capacity": 10
+        }
+    ]
+
     response = requests.post(
         f"{BASE_URL}/optimize",
-        json={"incidents": incidents}
+        json={"incidents": incidents, "resources": resources, "alpha": 0.5}
     )
     print(f"Status: {response.status_code}")
     data = response.json()
-    print(f"Fairness Score: {data['fairness_score']}")
     print(f"Algorithm: {data['algorithm']}")
-    print(f"Optimized Count: {len(data['optimized_incidents'])}")
+    print(f"Total Distance: {data['total_distance_km']} km")
+    print(f"Ordered Count: {len(data['ordered_incidents'])}")
     assert response.status_code == 200
     print("✓ PASSED")
 

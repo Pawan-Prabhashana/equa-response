@@ -196,8 +196,13 @@ def optimize(req: OptimizationRequest):
 
     return {
         "path": path,
-        "ordered_incidents": [i.dict() for i in ordered],
+        "ordered_incidents": [i.model_dump() for i in ordered],
         "total_distance_km": total_km,
         "algorithm": "DynamicScore: (dist*(1-alpha))-(severity*alpha*10)",
         "alpha_used": alpha,
     }
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
